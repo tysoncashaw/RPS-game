@@ -48,10 +48,8 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
-  deploy:
-    # Add a dependency to the build job
-    needs: Deploy-Docker-Container
-
+  
+  Deploy-Github-Page:
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       pages: write      # to deploy to Pages
