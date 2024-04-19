@@ -1,33 +1,13 @@
-from random import randint
+import streamlit as st
+from streamlit_extras.switch_page_button import switch_page
+from rps_library import init_pages
 
-#create a list of play options
-t = ["Rock", "Paper", "Scissors"]
-
-computer =t[randint(0,2)]
-
-player = False
-
-while player == False:
-    player = input("Rock, Paper, Scissors? ")
-    if player == computer:
-        print("Tie!")
-    elif player == "Rock":
-        if computer == "Paper":
-            print("You lose...", computer, "covers", player)
-        else:
-            print("You win!", player, "smashes", computer)
-    elif player == "Paper":
-        if computer == "Scissors":
-            print("You lose...", computer, "cut", player)
-        else:
-            print("Yout win!", player, "covers", computer)
-    elif player == "Scissors":
-        if computer == "Rock":
-            print("You lose...", computer, "smashes", player)
-        else:
-            print("Your win!", player, "cut", computer)
-    else:
-        print("Thats not a valid play. Check your spelling!")
-
-    player = False 
-    computer = t[randint(0,2)]    
+if __name__ == "__main__":
+    init_pages()
+    
+    st.header("Welcome to the Rock Paper Scissors Game!")
+   
+    col1, col2, col3 = st.columns(3)
+    with col2:
+        if st.button("Play Game"):
+            switch_page("Game")
