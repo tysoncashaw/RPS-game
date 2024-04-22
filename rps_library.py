@@ -9,7 +9,7 @@ def init_pages():
         page_title="RPS Game",
         initial_sidebar_state="collapsed"
     )
-    hide_pages(['RPS','Game','Loser','Winner'])
+    hide_pages(['rps','Game','Loser','Winner', 'Tie'])
 
 def check_if_tie(player_choice):
     if st.session_state['computer_choice'] == player_choice:
