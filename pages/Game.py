@@ -15,27 +15,31 @@ if __name__ == "__main__":
         
     
     st.write("Choose your weapon: ")
-    rock, paper, scissors = st.columns(3)
-    with rock:
-        if st.button("Rock"):
-            update_statistics('games')
-            if not check_if_tie("Rock"):
-                check_for_winner("Rock")
-                 
-    with paper:
-        if st.button("Paper"):
-            update_statistics('games')
-            if not check_if_tie("Paper"):
-                check_for_winner("Paper")
+    main, stats = st.columns([.7, .3], gap = 'large')
 
-    with scissors:
-        if st.button("Scissors"):
-            update_statistics('games')
-            if not check_if_tie("Scissors"):    
-                check_for_winner("Scissors")
+    with main:
+        rock, paper, scissors = st.columns(3)
+        with rock:
+            if st.button("Rock"):
+                update_statistics('games')
+                if not check_if_tie("Rock"):
+                    check_for_winner("Rock")
+                    
+        with paper:
+            if st.button("Paper"):
+                update_statistics('games')
+                if not check_if_tie("Paper"):
+                    check_for_winner("Paper")
 
-    with paper:
-        with st.container():
+        with scissors:
+            if st.button("Scissors"):
+                update_statistics('games')
+                if not check_if_tie("Scissors"):    
+                    check_for_winner("Scissors")
+
+    with stats: 
+        with st.container(border=True):
+            st.write("Player Stats")
             st.write("Games Played: " + str(st.session_state['stat_games_played']))
             st.write("Games Won: " + str(st.session_state['stat_wins']))
             st.write("Games Lost: " + str(st.session_state['stat_losses']))
