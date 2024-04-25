@@ -12,3 +12,8 @@ if __name__ == "__main__":
     with col2:
         if st.button("Play Game"):
             switch_page("Game")
+
+    with col3:
+        if st.button("Exit Game"):
+            link = '[Exit Really?](http://tysoncashaw.com)'
+            st.markdown(link, unsafe_allow_html=True)
