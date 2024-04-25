@@ -6,6 +6,7 @@ if __name__ == "__main__":
     init_pages()
     
     st.header("Welcome to the Rock Paper Scissors Game!")
+
    
     col1, col2, col3 = st.columns(3)
     with col2:
