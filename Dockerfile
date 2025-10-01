@@ -1,6 +1,6 @@
 FROM python:3.11-slim as base
 WORKDIR /usr/app/src
-RUN addgroup -S rps && adduser -S rps -G rps    
+RUN groupadd -r rps && useradd -r -g rps rps    
 USER rps
 EXPOSE 8501
 
