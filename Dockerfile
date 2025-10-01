@@ -1,16 +1,16 @@
-FROM python:latest
+FROM python:3.11-slim as base
 WORKDIR /usr/app/src
-
-COPY rps.py ./
-COPY rps_library.py ./
-COPY pages ./pages/
-
-RUN pip install --no-cache-dir --upgrade pip
-RUN pip install --no-cache-dir streamlit
-RUN pip install --no-cache-dir st_pages
-RUN pip install --no-cache-dir streamlit_extras
-RUN pip install --no-cache-dir validators
-
+RUN addgroup -S rps && adduser -S rps -G rps    
+USER rps
 EXPOSE 8501
 
-CMD [ "python", "-m",  "streamlit", "run", "./rps.py" ]
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
+
+COPY rps.py rps_library.py ./
+COPY pages ./pages/
+
+# Run Streamlit app
+CMD ["streamlit", "run", "rps.py", "--server.port=8501", "--server.address=0.0.0.0"]
