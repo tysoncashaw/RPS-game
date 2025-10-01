@@ -1,6 +1,5 @@
 import streamlit as st
 from st_pages import hide_pages
-from streamlit_extras.switch_page_button import switch_page
 from random import randint
 
 def init_pages():
@@ -60,7 +59,7 @@ def update_statistics(which_stat):
 def check_if_tie(player_choice):
     if st.session_state['computer_choice'] == player_choice:
         update_statistics('ties')
-        switch_page("Tie")
+        st.switch_page("pages/Tie.py")
     else:
        return False
 
@@ -100,4 +99,10 @@ def navigate_to(page, message):
     if 'game_message' not in st.session_state:
         st.session_state['game_message'] = message
   
-    switch_page(page)
+    # Accept either a page name like "Tie" or a file path "pages/Tie.py".
+    if not page.startswith("pages/"):
+        page_path = f"pages/{page}.py"
+    else:
+        page_path = page
+
+    st.switch_page(page_path)

@@ -8,7 +8,7 @@ def show_losing_message():
     with col1:
         if st.button("Play Again!"):
             del st.session_state['computer_choice']
-            switch_page("Game")
+            switch_page("pages/Game.py")
     with col2:
         if st.button("Exit Game"):
             link = '[Exit Really?](http://tysoncashaw.com)'
