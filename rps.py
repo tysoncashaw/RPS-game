@@ -1,5 +1,4 @@
 import streamlit as st
-from streamlit_extras.switch_page_button import switch_page
 from rps_library import init_pages
 
 if __name__ == "__main__":
@@ -11,7 +10,7 @@ if __name__ == "__main__":
     col1, col2, col3 = st.columns(3)
     with col2:
         if st.button("Play Game"):
-            switch_page("Game")
+            st.switch_page("pages/Game.py")
 
     with col3:
         if st.button("Exit Game"):
